@@ -1,3 +1,6 @@
+The presentation for this talk can be found at: https://app.excalidraw.com/l/1bhFY0Jtn8S/1xUSklpI5aj
+Video of this talk can be found at: https://youtu.be/xyuXM6HARfM
+
 Go to root folder and provision the virtual machines
 `vagrant up --provision`
 
