@@ -18,6 +18,7 @@ export VAULT_TOKEN=$(cat .vault-token)
 ```
 
 In Vault UI, login with the token given in previous code block and enable kv engine and fetch some secrets.
+
 In this example I created kv engine called "kv" and stored the secrets in path "postgres"
 
 VAULT: Getting vault secrets
@@ -30,19 +31,31 @@ vault kv get -format=json kv/postgres
 VAULT: Enable one time users for postgres
 
 Enable a database engine from Vault UI
+
 For the sake of this tutorial, name the Database engine "postgres"
+
 Next click "Create connection"
+
 Select "PostgreSQL" as the Database plugin
+
 Name the connection "postgres"
+
 For Connection URL give following value (psql1 private ip): postgresql://postgres:postgres@192.168.56.4:5432/postgres
+
 For root user and password give values "postgres"
+
 Click "Create database" > "Enable without rotating"
 
 Click "Add role"
+
 For the sake of this tutorial, lets name this Role as "service"
+
 Select "Dynamic" as the Type of role
+
 For creation statements add: CREATE ROLE "{{name}}" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; , click add
+
 Add a second row: GRANT SELECT ON ALL TABLES IN SCHEMA public TO "{{name}}"; , click add
+
 Click "Create role"
 
 To try this out, you can click "Generate credentials" from the UI and use the generated credentials to connect into psql1
@@ -128,8 +141,11 @@ vault token create -orphan -period "72h" -renewable -policy "boundary"
 Use the token generated from the last command on the boundary UI credential store configuration
 
 Once the credential store is configured you need to create a Credential library inside the credential store
+
 Name it how you will but set the Vault path parameter to postgres/creds/service"
+
 Hit Save and go to your target and connect this new credential library to your target
+
 
 Now you should be able to connect with the following commands. Make sure you have the proper environment variables
 set on the machine you decide to use
