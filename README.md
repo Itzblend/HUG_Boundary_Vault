@@ -86,7 +86,7 @@ Please be sure to store it safely!
 Use the above token to run the commands in the future:
 ```
 export BOUNDARY_ADDR=http://192.168.56.2:9200
-export BOUNDARY_TOKEN=at_bCdAIM8t2m_s1Dy3eJAyqBjTpB9CeQdVNpj7zYXa3VXYLfoBaVP3EEXEGKgNiA583eWBJv3ttpdijp5DBnMGa9YyecUiRR3H5NwGR9ficc2QunC9rMv
+export BOUNDARY_TOKEN=<token from above>
 ```
 
 Setting Boundary infra
@@ -99,7 +99,7 @@ Setting Boundary infra
 
 Try out the connection and connect to postgres through boundary
 ```
-boundary connect postgres -target-id <target-id of your newly created target> -dbname postgres -username postgres
+boundary connect postgres -target-id <target-id> of your newly created target> -dbname postgres -username postgres
 ```
 
 Setting Vault/Boundary connection:
@@ -130,6 +130,6 @@ Hit Save and go to your target and connect this new credential library to your t
 Now you should be able to connect with the following commands. Make sure you have the proper environment variables
 set on the machine you decide to use
 ```
-boundary targets authorize-session -id ttcp_4XNEJQzSYZ -format json | jq '.'
-boundary connect postgres -target-id ttcp_4XNEJQzSYZ -dbname postgres
+boundary targets authorize-session -id <target_id> -format json | jq '.'
+boundary connect postgres -target-id <target_id> -dbname postgres
 ```
